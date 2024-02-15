@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="University project on the subject - Cross-platform programming"
+    />
+
+    <link rel="stylesheet" th:href="@{/main.css}" />
+    <title>Hello Spring</title>
+  </head>
+  <body>
+    <h1 th:text="${pageTitle}"></h1>
+    <ul>
+      <li th:each="lang: ${langs}">
+        <span th:text="${lang}"></span>
+      </li>
+    </ul>
+  </body>
+</html>
