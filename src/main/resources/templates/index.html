@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,11 +12,130 @@
     <title>Hello Spring</title>
   </head>
   <body>
-    <h1 th:text="${pageTitle}"></h1>
-    <ul>
-      <li th:each="lang: ${langs}">
-        <span th:text="${lang}"></span>
-      </li>
-    </ul>
+    <header th:class="header">
+      <!-- add variable  -->
+      <h1 th:text="#{dashboard.title}"></h1>
+
+      <select th:id="|selector-${lang}|">
+        <option value="">Select [[${lang}]]</option>
+        <option value="en">English</option>
+        <option value="ua">Ukrainian</option>
+        <option value="de">German</option>
+      </select>
+    </header>
+
+    <main th:class="main">
+      <div th:class="main__inner">
+        <!-- maps -->
+        <section th:class="main__block">
+          <h3 th:class="section__title">Maps</h3>
+          <div th:class="section__content">
+            <ul th:class="map__list">
+              <li th:class="map__list-item" th:each="map: ${maps}">
+                <a
+                  th:class="map__list-link"
+                  th:href="${map.value}"
+                  target="_blank"
+                  th:text="${map.key}"
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- list & object methods and properties -->
+        <section th:class="main__block">
+          <h3 th:class="section__title">Lists & Object</h3>
+          <div th:class="section__content">
+            <ul th:class="arr__list">
+              <li th:class="arr__list-item" th:each="sn: ${sns}">
+                <div th:class="arr__list-item-text">
+                  <h4 th:text="${sn.getName()}"></h4>
+                  <p th:text="${sn.desc}"></p>
+                  <span th:text="${sn.getAuthor()}"></span>
+                </div>
+                <a
+                  th:class="arr__list-link"
+                  th:href="${sn.link}"
+                  target="_blank"
+                  >Go to page</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- conditions  -->
+        <section th:class="main__block">
+          <h3 th:class="section__title">Conditions></span></h3>
+          <div th:class="section__content">
+            <div th:class="condition__container">
+              <div
+                th:class="condition__item"
+                th:each="pc: ${pcs}"
+                th:unless="${pc.price > 1500}"
+                th:object="${pc}"
+              >
+                <div th:class="condition__item-photo">
+                  <img th:src="*{link}" alt="pc photo" />
+                </div>
+                <div th:class="condition__item-stats">
+                  <ul th:class="condition__item-stat-list">
+                    <li>
+                      CPU:
+                      <span th:text="*{CPU}"></span>
+                    </li>
+                    <li>
+                      GPU:
+                      <span th:text="*{GPU}"></span>
+                    </li>
+                    <li>
+                      Motherboard:
+                      <span th:text="*{Motherboard}"></span>
+                    </li>
+                    <li>
+                      RAM:
+                      <span th:text="*{RAM}"></span>
+                    </li>
+                    <li>
+                      Capacity:
+                      <span th:text="*{HardDrive}"></span>
+                    </li>
+                    <li>
+                      Power:
+                      <span th:text="*{Power}"></span>
+                    </li>
+                    <li>
+                      Case:
+                      <span th:text="*{Case}"></span>
+                    </li>
+                    <li>
+                      OS:
+                      <span th:text="*{OS}"></span>
+                    </li>
+                    <li>
+                      Price:
+                      <span th:text="|*{price}$|"></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer th:class="footer">
+      <p>
+        © | created by
+        <a href="https://www.instagram.com/_roma.shka.__/" target="_blank"
+          >Roman Kovinia</a
+        >
+      </p>
+    </footer>
+
+    <script th:src="@{js/main.js}">
+    </script>
   </body>
 </html>
