@@ -55,7 +55,7 @@ public class DemoController {
                                 "X, formerly and colloquially known as Twitter, is a social media website based in the United States",
                                 "Jack Dorsey", "https://twitter.com/"));
 
-                model.addAttribute("pageTitle", "Hello spring");
+                model.addAttribute("pageTitle", "dashboard.title");
                 model.addAttribute("lang", "language");
                 model.addAttribute("maps", languageLinks);
                 model.addAttribute("sns", sns);

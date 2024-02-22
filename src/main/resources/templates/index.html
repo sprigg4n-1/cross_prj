@@ -14,7 +14,7 @@
   <body>
     <header th:class="header">
       <!-- add variable  -->
-      <h1 th:text="#{dashboard.title}"></h1>
+      <h1 th:text="#{__${pageTitle}__}"></h1>
 
       <select th:id="|selector-${lang}|">
         <option value="">Select [[${lang}]]</option>
