@@ -17,10 +17,10 @@
       <h1 th:text="#{__${pageTitle}__}"></h1>
 
       <select th:id="|selector-${lang}|">
-        <option value="">Select [[${lang}]]</option>
-        <option value="en">English</option>
-        <option value="ua">Ukrainian</option>
-        <option value="de">German</option>
+        <option th:text="#{dashboard.title}" value=""></option>
+        <option th:text="#{dashboard.en}" value="en"></option>
+        <option th:text="#{dashboard.ua}" value="ua"></option>
+        <option th:text="#{dashboard.de}" value="de"></option>
       </select>
     </header>
 
